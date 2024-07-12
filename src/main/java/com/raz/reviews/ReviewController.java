@@ -20,11 +20,11 @@ public class ReviewController {
 
 
     @GetMapping(value = "/api/v1/getreview")
-    public List<Review> getReviewByMovieId(Integer movieId){
+    public List<Review> getReviewByMovieId(@RequestBody Integer movieId){
         if (movieId == null){
             return null;
         } else {
-            List<Review> allReviews = reviewRepository.findAllByIdEquals(movieId);
+            List<Review> allReviews = reviewRepository.findAllByMovieIdEquals(movieId);
             return allReviews;
         }
     }
