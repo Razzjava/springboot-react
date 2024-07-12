@@ -22,6 +22,7 @@ public class Review {
         this.review = review;
         this.name = name;
     }
+    public Review(){}
 
     public Integer getId() {
         return Id;
