@@ -1,5 +1,6 @@
 import {useState} from "react";
 import AddMovie from "./AddMovie.jsx";
+import ShowMovies from "./ShowMovies.jsx";
 
 function Home(){
 
@@ -9,6 +10,7 @@ function Home(){
             <h1>Movie Review Platform</h1>
             <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Movie</button>
             <AddMovie></AddMovie>
+            <ShowMovies></ShowMovies>
 
 
 
