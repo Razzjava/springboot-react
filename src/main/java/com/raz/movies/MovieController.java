@@ -3,9 +3,10 @@ package com.raz.movies;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.util.List;
 
+
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 public class MovieController {
 
@@ -15,9 +16,11 @@ public class MovieController {
         this.movieRepository = movieRepository;
     }
 
+
     @PostMapping(value = "/api/v1/createmovie")
    public void createMovie(@RequestBody NewMovie movie){
         MovieService possibleMovie = new MovieService();
+        System.out.println(movie);
         Movie newMovie = possibleMovie.createNewMovie(movie);
 
         if (newMovie == null){
@@ -39,6 +42,7 @@ public class MovieController {
         }
         return allMovies;
     }
+
 
     @PutMapping(value = "/api/v1/updateMovie")
     public void updateMovie(@RequestBody NewMovie movie){
