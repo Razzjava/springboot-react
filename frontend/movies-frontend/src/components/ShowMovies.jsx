@@ -22,14 +22,28 @@ function ShowMovies(){
 
     return(
         <>
-            <ul>
-                {movies.map(e=>(
-                    <li key={e.id}>
-                        <h4>{e.name}</h4>
-                        <p>{e.description}</p>
-                    </li>
+
+            <h2 className="list-of-movies">List of all Movies</h2>
+            <table className="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {movies.map(e => (
+                    <tr key={e.id}>
+                        <td>{e.id}</td>
+                        <td>{e.name}</td>
+                        <td>{e.description}</td>
+                    </tr>
                 ))}
-            </ul>
+
+                </tbody>
+            </table>
         </>
     )
 }
