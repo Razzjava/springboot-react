@@ -44,3 +44,7 @@
 .list-of-movies{
   padding-top:50px;
 }
+
+.borderReview{
+border-top:var(--bs-modal-footer-border-width) solid var(--bs-modal-footer-border-color);
+}
