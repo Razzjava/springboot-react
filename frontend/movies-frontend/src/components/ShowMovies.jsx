@@ -1,9 +1,17 @@
 import {useState, useEffect} from "react";
+import ViewMovie from "./ViewMovie.jsx";
 
 
 function ShowMovies(){
 
     const [movies, setMovies] = useState([])
+    const [id, setId] = useState();
+    const [selectedMovie, setSelectedMovie] = useState()
+
+    const handleClick = (movie) =>{
+        setId(movie.id)
+        setSelectedMovie(movie)
+    }
 
     useEffect(() => {
         fetch("http://localhost:9001/api/v1/getallmovies").then(res=>{return res.json()}).then(
@@ -36,7 +44,7 @@ function ShowMovies(){
                 <tbody>
                 {movies.map(e => (
                     <tr key={e.id}>
-                        <td>{e.id}</td>
+                        <td><button data-bs-toggle="modal" data-bs-target="#viewMovie" onClick={()=> handleClick(e)}>{e.id}</button></td>
                         <td>{e.name}</td>
                         <td>{e.description}</td>
                     </tr>
@@ -44,6 +52,7 @@ function ShowMovies(){
 
                 </tbody>
             </table>
+            <ViewMovie id={id} selectedMovie={selectedMovie} ></ViewMovie>
         </>
     )
 }
