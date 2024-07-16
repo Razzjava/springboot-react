@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import AllReviews from "./AllReviews.jsx";
+import FetchReview from '../api/FetchReview.js'
 
 function PostReview({id}){
      const [review, setReview] = useState("");
@@ -19,28 +20,32 @@ function PostReview({id}){
             headers:{"Content-Type": "application/json"},
             body:JSON.stringify(newReview)
         })
+
+      setAllReviews(FetchReview(id));
+
     }
 
     useEffect(() => {
 
-        const param = new URLSearchParams({
+let listReviews = [];
+ const param = new URLSearchParams({
             "movieId": id
         })
 
         const url = `http://localhost:9001/api/v1/getreview?` + param;
-        console.log(url);
+
         fetch(url).then(res=> {return res.json()}).then(data =>{
             let allReview = Object.values(data);
-            let listReviews = []
+           // let listReviews = []
 
             allReview.map( e=>{
                 listReviews.push(e);
             })
-            setAllReviews(listReviews);
-        })
-            console.log(allReviews);
 
-            console.log()
+setAllReviews(listReviews);
+        })
+
+
 
 
     }, [id]);
