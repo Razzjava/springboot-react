@@ -1,4 +1,5 @@
 import { useState } from "react";
+import FetchMovies from "../api/FetchMovies.js"
 
 
 function AddMovie(){
@@ -31,6 +32,7 @@ function AddMovie(){
             }
         )
 
+        FetchMovies();
 
     }
 
